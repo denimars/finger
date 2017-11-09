@@ -9,17 +9,12 @@ type Jurusan struct{
 }
 
 func (jurusan *Jurusan) Validate(v *revel.Validation){
-	v.Check(
-		jurusan.Kode,
-		revel.MinSize{3},
-		revel.MaxSize{10},
-	)
+	v.Required(jurusan.Kode).Message("*Harus diisi")
+	v.MinSize(jurusan.Kode, 2).Message("*Min 2")
+	v.MaxSize(jurusan.Kode, 10).Message("*Max 10")
 
-
-	v.Check(
-		jurusan.Nama,
-		revel.MinSize{5},
-		revel.MaxSize{50},
-	)
+	v.Required(jurusan.Nama).Message("*Harus diisi")
+	v.MinSize(jurusan.Nama, 5).Message("*Min 5")
+	v.MaxSize(jurusan.Nama, 50).Message("*Max 10")
 }
 
