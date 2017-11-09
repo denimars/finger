@@ -12,8 +12,9 @@ func (jurusan *Jurusan) Validate(v *revel.Validation){
 	v.Check(
 		jurusan.Kode,
 		revel.MinSize{3},
-		revel.MaxSize{50},
+		revel.MaxSize{10},
 	)
+
 
 	v.Check(
 		jurusan.Nama,
