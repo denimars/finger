@@ -21,7 +21,7 @@ func(c Jurusan) Save(jurusan m.Jurusan) revel.Result{
 	if c.Validation.HasErrors(){
 		c.Validation.Keep()
 		c.FlashParams()
-		return c.Redirect("/jurusan?error=notnull")
+		return c.Redirect(routes.Jurusan.Index())
 	}
 	jurusan.Kode = strings.ToUpper(jurusan.Kode)
 	jurusan.Nama = strings.ToUpper(jurusan.Nama)
@@ -29,5 +29,7 @@ func(c Jurusan) Save(jurusan m.Jurusan) revel.Result{
 	if err.Error !=nil{
 		panic(err.Error)
 	}
+	//c.Flash.Success("Berhasil Disimpan")
+	//c.Flash.Out["pesan"]="yeee ini pesan"
 	return c.Redirect(routes.Jurusan.Index())
 }
