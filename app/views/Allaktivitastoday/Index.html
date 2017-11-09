@@ -1,0 +1,9 @@
+Test data<br> {{range $b := .aktivitas}} {{$b.Id}}
+<br> {{$b.Nama}}<br> {{$b.Jabatan}}<br>
+
+<br> {{indonesiadate $b.Tanggal}}
+
+
+<br> {{indonesiadatetime $b.Datang}}<br> {{indonesiadatetime $b.Pulang}}<br> {{$b.Keterangan}}<br> _______________________________________________________
+
+<br> {{end}}
