@@ -23,8 +23,8 @@ func(c Jurusan) Save(jurusan m.Jurusan) revel.Result{
 		c.FlashParams()
 		return c.Redirect(routes.Jurusan.Index())
 	}
-	jurusan.Kode = strings.ToUpper(jurusan.Kode)
-	jurusan.Nama = strings.ToUpper(jurusan.Nama)
+	jurusan.Kode = strings.ToUpper(strings.TrimSpace(jurusan.Kode))
+	jurusan.Nama = strings.ToUpper(strings.TrimSpace(jurusan.Nama))
 	err := app.DB.Save(&jurusan)
 	if err.Error !=nil{
 		panic(err.Error)
