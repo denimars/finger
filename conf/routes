@@ -10,7 +10,13 @@ module:testrunner
 GET     /login                                       App.Index
 
 GET     /                                            Allaktivitastoday.Index
+
+#gurukaryawan
 GET     /gurukaryawan                                Gurukaryawan.Index
+
+#jurusan
+
+GET     /jurusan                                    Jurusan.Index
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
