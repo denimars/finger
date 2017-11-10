@@ -10,7 +10,6 @@ type Mesin struct{
 
 func(mesin *Mesin) Validate(v *revel.Validation){
 	v.Required(mesin.Kode).Message("*harus diisi")
-	v.MinSize(mesin.Kode, 2).Message("*min 2")
 	v.MaxSize(mesin.Kode, 10).Message("*max 10")
 
 	v.Required(mesin.Ip).Message("*harus diisi")
