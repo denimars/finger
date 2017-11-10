@@ -14,9 +14,7 @@ type Jurusan struct{
 }
 
 func(c Jurusan) Index() revel.Result{
-	var jurusan []m.Jurusan
-	app.DB.Find(&jurusan)
-	//log.Println(jurusan)
+	jurusan := GetAllJurusan()
 	return c.Render(jurusan)
 }
 
@@ -34,6 +32,12 @@ func(c Jurusan) Save(jurusan m.Jurusan) revel.Result{
 		panic(err.Error)
 	}
 	//c.Flash.Success("Berhasil Disimpan")
-	//c.Flash.Out["pesan"]="yeee ini pesan"
+	//c.Flash.Out["pesan"]="Berhasil Disimpan"
 	return c.Redirect(routes.Jurusan.Index())
+}
+
+func GetAllJurusan() []m.Jurusan{
+	var jurusan []m.Jurusan
+	app.DB.Find(&jurusan)
+	return jurusan
 }
