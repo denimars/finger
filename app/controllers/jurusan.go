@@ -37,8 +37,28 @@ func(c Jurusan) Save(jurusan m.Jurusan) revel.Result{
 }
 
 func(c Jurusan) Edit(id int) revel.Result{
-	a := c.GetJurusan(id)
-	return c.Render(a)
+	jurusan := c.GetJurusan(id)
+	return c.Render(jurusan)
+}
+
+func(c Jurusan) Push(id int, kode string, nama string) revel.Result{
+	jurusan := c.GetJurusan(id)
+	jurusan.Kode = strings.ToUpper(strings.TrimSpace(kode))
+	jurusan.Nama = strings.ToUpper(strings.TrimSpace(nama))
+	err := app.DB.Save(&jurusan)
+	if err.Error!=nil{
+		panic(err.Error)
+	}
+	return c.Redirect(routes.Jurusan.Index())
+}
+
+func(c Jurusan) Delete(id int) revel.Result{
+	var jurusan m.Jurusan
+	err := app.DB.Where("Id=?", id).Delete(&jurusan)
+	if err.Error != nil{
+		panic(err.Error)
+	}
+	return c.Redirect(routes.Jurusan.Index())
 }
 
 func(c Jurusan) GetJurusan(id int) *m.Jurusan{

@@ -19,6 +19,8 @@ GET     /gurukaryawan                                Gurukaryawan.Index
 GET     /jurusan                                    Jurusan.Index
 POST    /jurusan/save                                Jurusan.Save
 GET     /jurusan/:id/edit                                Jurusan.Edit
+POST    /jurusan/edit                               Jurusan.Push
+GET     /jurusan/delete/:id                         Jurusan.Delete
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

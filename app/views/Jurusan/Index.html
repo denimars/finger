@@ -54,7 +54,10 @@
                         <tr>
                             <td>{{$j.Kode}}</td>
                             <td>{{$j.Nama}}</td>
-                            <td>Aksi</td>
+                            <td>
+                                <a href="{{url "Jurusan.Edit" $j.Id}}" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></a>
+				<a href="{{url "Jurusan.Delete" $j.Id}}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                            </td>
                         </tr>
                         {{end}}
                     </tbody>
