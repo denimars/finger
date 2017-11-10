@@ -6,6 +6,7 @@ import(
 	"finger/app/routes"
 	"finger/app"
 	"strings"
+	//"log"
 )
 
 type Jurusan struct{
@@ -13,7 +14,10 @@ type Jurusan struct{
 }
 
 func(c Jurusan) Index() revel.Result{
-	return c.Render()
+	var jurusan []m.Jurusan
+	app.DB.Find(&jurusan)
+	//log.Println(jurusan)
+	return c.Render(jurusan)
 }
 
 func(c Jurusan) Save(jurusan m.Jurusan) revel.Result{
