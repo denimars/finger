@@ -33,3 +33,12 @@ func(c Mesin) Save(mesin m.Mesin) revel.Result{
 	} 
 	return c.Redirect(routes.Mesin.Index())
 }
+
+func(c Mesin) Edit(id int) revel.Result{
+	var mesin m.Mesin
+	err := app.DB.Find(&mesin, id)
+	if err.Error != nil{
+		panic(err.Error)
+	}
+	return c.Render(mesin)
+}
