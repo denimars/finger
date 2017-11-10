@@ -1,0 +1,52 @@
+{{set . "title" "Jurusan"}} {{template "header.html" .}}
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">Jurusan</h3>
+            </div>
+
+            <div class="box-body">
+                <form action="{{url "Izincuti.Save"}}" method="post" class="form-horizontal">
+                    <div class="form-group">
+
+                        <label class="col-sm-2 control-label">Mulai</label>
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' name="mulai" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                        <span style="color:red"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="col-sm-2 control-label">Jurusan</label>
+                        <div class='input-group date' id='datetimepicker2'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                        <span style="color:red"></span>
+                    </div>
+            </div>
+            <div>
+                <div class="box-footer">
+                    <input type="submit" class="btn btn-primary" value="Simpan" />
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        $('#datetimepicker1').datetimepicker({
+            locale: 'id'
+        });
+    });
+</script>
+
+{{template "footer.html" .}}

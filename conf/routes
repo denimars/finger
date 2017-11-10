@@ -29,6 +29,10 @@ GET     /mesin/:id/edit                             Mesin.Edit
 POST    /mesin/edit                                 Mesin.Push
 GET     /mesin/delete/:id                           Mesin.Delete
 
+#izincuti
+
+GET     /izincuti                                   Izincuti.Index
+
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
