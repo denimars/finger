@@ -1,0 +1,73 @@
+{{set . "title" "Jurusan"}} {{template "header.html" .}}
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">Jurusan</h3>
+            </div>
+
+            <div class="box-body">
+                <form action="{{url "Mesin.Save"}}" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        {{with $field := field "mesin.Kode" .}}
+                        <label class="col-sm-2 control-label">Kode</label>
+                        <div class="col-sm-2">
+                            <input type="text" value="{{$field.Flash}}" name="{{$field.Name}}" class="form-control">
+                        </div>
+                        <span style="color:red">{{$field.Error}}</span> {{end}}
+                    </div>
+                    <div class="form-group">
+                        {{with $field := field "mesin.Ip" .}}
+                        <label class="col-sm-2 control-label">Jurusan</label>
+                        <div class="col-sm-4">
+                            <input type="text" value="{{$field.Flash}}" name="{{$field.Name}}" class="form-control">
+                        </div>
+                        <span style="color:red">{{$field.Error}}</span> {{end}}
+                    </div>
+            </div>
+            <div>
+                <div class="box-footer">
+                    <input type="submit" class="btn btn-primary" value="Simpan" />
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Daftar Jurusan</h3>
+            </div>
+            <div class="box-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Kode</th>
+                            <th>Ip</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{range $m := .mesin}}
+                        <tr>
+                            <td>{{$m.Kode}}</td>
+                            <td>{{$m.Ip}}</td>
+                            <td>
+                                <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></a>
+                                <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                            </td>
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{{template "footer.html" .}}
