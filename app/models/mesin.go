@@ -14,6 +14,6 @@ func(mesin *Mesin) Validate(v *revel.Validation){
 	v.MaxSize(mesin.Kode, 10).Message("*max 10")
 
 	v.Required(mesin.Ip).Message("*harus diisi")
-	v.MinSize(mesin.Ip, 8).Message("*min 8")
+	v.MinSize(mesin.Ip, 8).Message("*min 7")
 	v.MaxSize(mesin.Ip, 15).Message("*max 15")
 }

@@ -26,6 +26,9 @@ GET     /jurusan/delete/:id                         Jurusan.Delete
 GET     /mesin                                      Mesin.Index
 POST    /mesin/save                                 Mesin.Save
 GET     /mesin/:id/edit                             Mesin.Edit
+POST    /mesin/edit                                 Mesin.Push
+GET     /mesin/delete/:id                           Mesin.Delete
+
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

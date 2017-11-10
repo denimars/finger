@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-12">
         <div class="box box-warning">
             <div class="box-header with-border">
-                <h3 class="box-title">Jurusan</h3>
+                <h3 class="box-title">Mesin</h3>
             </div>
 
             <div class="box-body">
@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group">
                         {{with $field := field "mesin.Ip" .}}
-                        <label class="col-sm-2 control-label">Jurusan</label>
+                        <label class="col-sm-2 control-label">Ip</label>
                         <div class="col-sm-4">
                             <input type="text" value="{{$field.Flash}}" name="{{$field.Name}}" class="form-control">
                         </div>
@@ -38,7 +38,7 @@
     <div class="col-sm-12 col-md-12">
         <div class="box box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title">Daftar Jurusan</h3>
+                <h3 class="box-title">Daftar Mesin</h3>
             </div>
             <div class="box-body">
                 <table class="table table-hover">
@@ -55,8 +55,8 @@
                             <td>{{$m.Kode}}</td>
                             <td>{{$m.Ip}}</td>
                             <td>
-                                <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></a>
-                                <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                <a href="{{url "Mesin.Edit" $m.Id}}" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></a>
+                                <a href="{{url "Mesin.Delete" $m.Id}}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                             </td>
                         </tr>
                         {{end}}

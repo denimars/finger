@@ -35,10 +35,35 @@ func(c Mesin) Save(mesin m.Mesin) revel.Result{
 }
 
 func(c Mesin) Edit(id int) revel.Result{
-	var mesin m.Mesin
-	err := app.DB.Find(&mesin, id)
+	mesin := c.getMesin(id)
+	return c.Render(mesin)
+}
+
+func(c Mesin) Push(id int, kode string, ip string) revel.Result{
+	mesin := c.getMesin(id)
+	mesin.Kode = strings.ToUpper(strings.TrimSpace(kode))
+	mesin.Ip = strings.ToUpper(strings.TrimSpace(ip))
+	err := app.DB.Save(&mesin)
 	if err.Error != nil{
 		panic(err.Error)
 	}
-	return c.Render(mesin)
+	return c.Redirect(routes.Mesin.Index())
+}
+
+func(c Mesin) Delete(id int) revel.Result{
+	var mesin m.Mesin
+	err := app.DB.Where("Id=?", id).Delete(&mesin)
+	if err.Error != nil{
+		panic(err.Error)
+	}
+	return c.Redirect(routes.Mesin.Index())
+}
+
+func(c Mesin) getMesin(id int) *m.Mesin{
+	var mesin m.Mesin
+	err := app.DB.Find(&mesin, id)
+	if err.Error !=nil{
+		panic(err.Error)
+	}
+	return &mesin
 }
