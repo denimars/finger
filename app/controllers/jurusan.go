@@ -36,6 +36,17 @@ func(c Jurusan) Save(jurusan m.Jurusan) revel.Result{
 	return c.Redirect(routes.Jurusan.Index())
 }
 
+func(c Jurusan) Edit(id int) revel.Result{
+	a := c.GetJurusan(id)
+	return c.Render(a)
+}
+
+func(c Jurusan) GetJurusan(id int) *m.Jurusan{
+	var jurusan m.Jurusan
+	app.DB.Find(&jurusan, id)
+	return &jurusan
+}
+
 func GetAllJurusan() []m.Jurusan{
 	var jurusan []m.Jurusan
 	app.DB.Find(&jurusan)

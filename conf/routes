@@ -17,7 +17,8 @@ GET     /gurukaryawan                                Gurukaryawan.Index
 #jurusan
 
 GET     /jurusan                                    Jurusan.Index
-POST    /jurusansave                                Jurusan.Save
+POST    /jurusan/save                                Jurusan.Save
+GET     /jurusan/:id/edit                                Jurusan.Edit
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
