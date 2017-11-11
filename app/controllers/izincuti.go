@@ -3,10 +3,10 @@ package controllers
 import (
 	"github.com/revel/revel"
 	m "finger/app/models"
-	"time"
 	"finger/app/routes"
 	"finger/app"
-	"log"
+	"finger/app/tugas"
+	"strings"
 )
 
 const(
@@ -24,18 +24,12 @@ func(c Izincuti) Index() revel.Result{
 	return c.Render()
 }
 
-func(c Izincuti) Save(mulai string) revel.Result{
-	a, _ := time.Parse(FORM_DATE_CON, mulai)
-	zz := a.Format(SQL_DATE_CON)
+func(c Izincuti) Save(mulai string, akhir string) revel.Result{
 	var izincuti m.Izincuti
 	izincuti.PegawaiId = 20
 	izincuti.JenisIzin = "ayam bakar"
-	izincuti.Mulai = zz
-	izincuti.Berakhir = zz
-	log.Println("_________________________")
-	log.Println(zz)
-	log.Println(a)
-	log.Println("__________________________")
+	izincuti.Mulai = tugas.ToSQLDT(strings.TrimSpace(mulai))
+	izincuti.Berakhir = tugas.ToSQLDT(strings.TrimSpace(akhir))
 	err := app.DB.Save(&izincuti)
 	if err.Error !=nil{
 		panic(err.Error)

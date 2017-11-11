@@ -2,6 +2,8 @@ package  models
 
 import "time"
 
+//scanTime
+
 type Attlog struct{
 	Id int `gorm:"auto_increment;not_null;primary_key"`
 	Uid int

@@ -1,5 +1,7 @@
 package models
 
+import "github.com/revel/revel"
+
 
 type Gurukaryawan struct{
 	Id int `gorm:"int(10); not_null; auto_increment; primary_key"`
@@ -8,3 +10,11 @@ type Gurukaryawan struct{
 	Uid int `gorm:"int(11)"`
 	Jabatan string `gorm:"varchar(30)"`
 }
+
+func(gurukaryawan Gurukaryawan) Validate(v *revel.Validation){
+	v.Required(gurukaryawan.Nama).Message("*harus diisi")
+	v.MinSize(gurukaryawan.Nama, 3).Message("*min 3")
+	v.MaxSize(gurukaryawan.Nama, 50).Message("*min 50")
+}
+
+
