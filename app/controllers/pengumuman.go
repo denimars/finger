@@ -45,9 +45,31 @@ func(c Pengumuman) Save(pengumuman m.Pengumuman) revel.Result{
 	return c.Redirect(routes.Pengumuman.Index())
 }
 
+func(c Pengumuman) Push(id int, judul string, pesan string, mulai string, berakhir string) revel.Result{
+	pengumuman := c.GetPengumuman(id)
+	pengumuman.Judul = strings.ToUpper(strings.TrimSpace(judul))
+	pengumuman.Pesan = strings.ToUpper(strings.TrimSpace(pesan))
+	pengumuman.StartTime = task.ToSQLDT(strings.TrimSpace(mulai))
+	pengumuman.EndTime	= task.ToSQLDT(strings.TrimSpace(berakhir))
+	err := app.DB.Save(&pengumuman)
+	if err.Error != nil{
+		panic(err.Error)
+	}
+	return c.Redirect(routes.Pengumuman.Index())
+}
+
 func(c Pengumuman) Edit(id int) revel.Result{
 	pengumuman := c.GetPengumuman(id)
 	return c.Render(pengumuman)
+}
+
+func(c Pengumuman) Delete(id int) revel.Result{
+	var pengumuman m.Pengumuman
+	err := app.DB.Where("Id=?", id).Delete(&pengumuman)
+	if err.Error != nil{
+		panic(err.Error)
+	}
+	return c.Redirect(routes.Pengumuman.Index())
 }
 
 func(c Pengumuman) GetPengumuman(id int) *m.Pengumuman{

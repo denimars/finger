@@ -17,17 +17,17 @@ GET     /gurukaryawan                                Gurukaryawan.Index
 #jurusan
 
 GET     /jurusan                                    Jurusan.Index
-POST    /jurusan/save                                Jurusan.Save
-GET     /jurusan/:id/edit                                Jurusan.Edit
+POST    /jurusan/save                               Jurusan.Save
+GET     /jurusan/:id/edit                           Jurusan.Edit
 POST    /jurusan/edit                               Jurusan.Push
-GET     /jurusan/delete/:id                         Jurusan.Delete
+DELETE  /jurusan/delete                             Jurusan.Delete
 
 #Mesin
 GET     /mesin                                      Mesin.Index
 POST    /mesin/save                                 Mesin.Save
 GET     /mesin/:id/edit                             Mesin.Edit
 POST    /mesin/edit                                 Mesin.Push
-GET     /mesin/delete/:id                           Mesin.Delete
+DELETE  /mesin/delete                               Mesin.Delete
 
 #izincuti
 
@@ -35,8 +35,10 @@ GET     /izincuti                                   Izincuti.Index
 
 #pengumuman
 GET    /pengumuman                                  Pengumuman.Index
-POST   /pengumuman/save                             Pengumuman.Save
-GET    /pengumuman/:id/edit
+POST   /pengumuman                                  Pengumuman.Save
+GET    /pengumuman/:id/edit                         Pengumuman.Edit
+POST   /pengumuman/edit                             Pengumuman.Push
+DELETE /pengumuman/delete                           Pengumuman.Delete
 
 
 # Ignore favicon requests
