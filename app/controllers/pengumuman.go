@@ -20,6 +20,13 @@ func(c Pengumuman) Index() revel.Result{
 }
 
 func(c Pengumuman) Save(pengumuman m.Pengumuman) revel.Result{
+	pengumuman.Validate(c.Validation)
+	if c.Validation.HasErrors(){
+			c.Validation.Keep()
+			c.FlashParams()
+			return c.Redirect(routes.Pengumuman.Index)
+	}
+	
 	pengumuman.Judul = strings.ToUpper(strings.TrimSpace(pengumuman.Judul))
 	pengumuman.Pesan = strings.ToUpper(strings.TrimSpace(pengumuman.Pesan))
 	pengumuman.StartTime = tugas.ToSQLDT(strings.TrimSpace(pengumuman.StartTime))
