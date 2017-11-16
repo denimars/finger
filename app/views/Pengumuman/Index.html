@@ -64,6 +64,7 @@
                             <th>Pesan</th>
                             <th>Mulai</th>
                             <th>Berakhir</th>
+			    <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,6 +74,10 @@
                             <td>{{$p.Pesan}}</td>
                             <td>{{datetime $p.StartTime}}</td>
                             <td>{{datetime $p.EndTime}}</td>
+			    <td>
+				<a href="{{url "Pengumuman.Edit" $p.Id}}" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></a>
+				<a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+			    <td>
                         </tr>
                         {{end}}
                     </tbody>

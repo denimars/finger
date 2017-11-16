@@ -36,6 +36,7 @@ GET     /izincuti                                   Izincuti.Index
 #pengumuman
 GET    /pengumuman                                  Pengumuman.Index
 POST   /pengumuman/save                             Pengumuman.Save
+GET    /pengumuman/:id/edit
 
 
 # Ignore favicon requests

@@ -44,3 +44,14 @@ func(c Pengumuman) Save(pengumuman m.Pengumuman) revel.Result{
 	}
 	return c.Redirect(routes.Pengumuman.Index())
 }
+
+func(c Pengumuman) Edit(id int) revel.Result{
+	pengumuman := c.GetPengumuman(id)
+	return c.Render(pengumuman)
+}
+
+func(c Pengumuman) GetPengumuman(id int) *m.Pengumuman{
+	var pengumuman m.Pengumuman
+	app.DB.Find(&pengumuman, id)
+	return &pengumuman
+}
