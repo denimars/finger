@@ -1,4 +1,4 @@
-package tugas
+package task
 
 import "time"
 

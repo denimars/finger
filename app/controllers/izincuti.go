@@ -5,7 +5,7 @@ import (
 	m "finger/app/models"
 	"finger/app/routes"
 	"finger/app"
-	"finger/app/tugas"
+	"finger/app/task"
 	"strings"
 )
 
@@ -28,8 +28,8 @@ func(c Izincuti) Save(mulai string, akhir string) revel.Result{
 	var izincuti m.Izincuti
 	izincuti.PegawaiId = 20
 	izincuti.JenisIzin = "ayam bakar"
-	izincuti.Mulai = tugas.ToSQLDT(strings.TrimSpace(mulai))
-	izincuti.Berakhir = tugas.ToSQLDT(strings.TrimSpace(akhir))
+	izincuti.Mulai = task.ToSQLDT(strings.TrimSpace(mulai))
+	izincuti.Berakhir = task.ToSQLDT(strings.TrimSpace(akhir))
 	err := app.DB.Save(&izincuti)
 	if err.Error !=nil{
 		panic(err.Error)
