@@ -15,6 +15,9 @@ func(gurukaryawan Gurukaryawan) Validate(v *revel.Validation){
 	v.Required(gurukaryawan.Nama).Message("*harus diisi")
 	v.MinSize(gurukaryawan.Nama, 3).Message("*min 3")
 	v.MaxSize(gurukaryawan.Nama, 50).Message("*min 50")
+	
+	v.Required(gurukaryawan.Uid).Message("*harus diisi")
+	v.MaxSize(gurukaryawan.Uid, 11).Message("*max 11")
 }
 
 
