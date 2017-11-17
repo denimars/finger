@@ -90,4 +90,16 @@
     </div>
 </div>
 
+{{template "jsscript.html" .}}
+<script>
+    $(function() {
+        $('#temp1').datetimepicker({
+            format: "DD-MM-YYYY HH:mm"
+        })
+        $('#temp2').datetimepicker({
+            format: "DD-MM-YYYY HH:mm"
+        })
+    });
+</script>
+
 {{template "footer.html" .}}
